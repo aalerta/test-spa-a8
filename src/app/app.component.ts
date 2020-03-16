@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {ApplicationInfoService} from './application-info.service';
 import {UserService} from './user.service';
+import {User} from './user';
+import {ApplicationInfo} from './application-info';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +15,10 @@ export class AppComponent {
   user: string;
 
   constructor(private applicationInfoService: ApplicationInfoService, private userService: UserService) {
-    const applicationInfo = applicationInfoService.getApplicationInfo();
+    const applicationInfo: ApplicationInfo = applicationInfoService.getApplicationInfo();
     this.title = applicationInfo.title;
     this.version = applicationInfo.version;
+    const currentUser: User = userService.getCurrentUser();
+    this.user = currentUser.name + ' ' + currentUser.surname + ' (' + currentUser.email + ')';
   }
 }

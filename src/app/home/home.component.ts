@@ -10,10 +10,10 @@ export class HomeComponent implements OnInit {
   title: string;
 
   constructor(private applicationInfoService: ApplicationInfoService) {
-    this.title = this.applicationInfoService.getApplicationInfo().title;
   }
 
   ngOnInit() {
+    this.applicationInfoService.getApplicationInfo().subscribe(applicationInfo => this.title = applicationInfo.title);
   }
 
 }

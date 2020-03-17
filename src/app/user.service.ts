@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
 import {User} from './user';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  currentUser: User;
 
-  constructor() {
-    this.currentUser = new User({email: 'angelo@alerta.it', id: 'aalerta', name: 'Angelo', surname: 'Alerta'});
+  constructor(private httpClient: HttpClient) {
   }
 
-  getCurrentUser(): User {
-    return this.currentUser;
+  getCurrentUser(): Observable<User> {
+    return this.httpClient.get('/assets/currentUser.json').pipe(map(object => new User(object)));
   }
 }

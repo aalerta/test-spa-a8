@@ -2,12 +2,12 @@
   <header>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-10">
+        <div class="col">
           <h1>
             {{ title }}
           </h1>
         </div>
-        <div class="col-2 text-right">
+        <div class="col text-right">
           <div><span>v. {{ version }}</span></div>
           <div><span>{{ user }}</span></div>
         </div>
@@ -17,15 +17,10 @@
   <main role="main" class="flex-shrink-0">
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <div>
-            <a [href]="'/home'">Home</a>
-          </div>
-          <div>
-            <a [href]="'/contacts'">Contacts</a>
-          </div>
+        <div class="col" style="padding-top: 15px;">
+            <p-menu [model]="items"></p-menu>
         </div>
-        <div class="col-10">
+        <div class="col-10" style="padding-top: 15px;">
           <router-outlet></router-outlet>
         </div>
       </div>
